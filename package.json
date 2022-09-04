@@ -1,0 +1,26 @@
+{
+  "name": "grocerylist",
+  "version": "1.0.0",
+  "description": "Grocery List",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/terrycodeshop/grocerylist.git"
+  },
+  "keywords": [
+    "Grocery",
+    "List"
+  ],
+  "author": "Terry Code Shop",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/terrycodeshop/grocerylist/issues"
+  },
+  "homepage": "https://github.com/terrycodeshop/grocerylist#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
