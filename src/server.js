@@ -1,9 +1,7 @@
 /* */
 
-/*( environment variables */
-const port = process.env.PORT || 3000;
-const mongo_uri =
-  "mongodb+srv://doadmin:UB70V68mO1253Kyt@tcs-mongo-7d8a1ff1.mongo.ondigitalocean.com/admin?tls=true&authSource=admin";
+/* load development environment variables */
+require("dotenv").config();
 
 /* import all node modules */
 const path = require("path");
@@ -19,7 +17,7 @@ const multer = require("multer");
 
 const app = express();
 const store = new MongoDBStore({
-  uri: mongo_uri,
+  uri: process.env.DATABASE_URI,
   collection: "sessions",
 });
 const csrfProtection = csrf();
@@ -46,12 +44,15 @@ app.get("", (req, res) => {
 
 /*connect to mongo database and then begin listening for connections */
 mongoose
-  .connect(mongo_uri)
+  .connect(process.env.DATABASE_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then((result) => {
     console.log("Connected to database");
 
-    app.listen(3000, () => {
-      console.log("Server is listening on port 3000");
+    app.listen(process.env.PORT, () => {
+      console.log(`Server is listening on port ${process.env.PORT}`);
     });
   })
   .catch((err) => {

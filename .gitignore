@@ -1,5 +1,7 @@
 # TerryCodeShop
 .DS_STORE
+private/
+.env
 
 # Logs
 logs

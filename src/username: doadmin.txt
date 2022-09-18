@@ -1,9 +1,0 @@
-username: doadmin
-password: UB70V68mO1253Kyt
-
-username = doadmin
-password = <UB70V68mO1253Kyt
-host = mongodb+srv://tcs-mongo-7d8a1ff1.mongo.ondigitalocean.com
-database = admin
-
-connection tring = mongodb+srv://doadmin:UB70V68mO1253Kyt@tcs-mongo-7d8a1ff1.mongo.ondigitalocean.com/admin?tls=true&authSource=admin
