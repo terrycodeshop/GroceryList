@@ -35,11 +35,47 @@ hbs.registerPartials(partialsPath);
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath));
 
-app.get("", (req, res) => {
-  res.render("index", {
-    title: "Grocery List",
-    name: "Terry Code Shop",
+/* add middleware to have form data parsed and attached to request body property */
+app.use(express.urlencoded({ extended: true }));
+
+/* import product model */
+const ProductModel = require("./models/product_model.js");
+
+/* return list of products */
+app.get("/products", (req, res) => {
+  ProductModel.find({}, {}, function (err, results) {
+    res.render("product_list", { products: results });
   });
+});
+
+/* return new product form  */
+app.get("/products/new", (req, res) => {
+  res.render("product_new", {
+    name: "",
+    brand: "(Any Brand)",
+    quantity: 1,
+  });
+});
+
+/* save form data for new product */
+app.post("/products/new", (req, res) => {
+  let product = new ProductModel();
+  product.name = req.body.name;
+  product.brand = req.body.brand;
+  product.quantity = req.body.quantity;
+  product
+    .save()
+    .then((result) => {
+      console.log(result);
+      res.redirect("/products");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+app.get("/", (req, res) => {
+  res.render("index");
 });
 
 /*connect to mongo database and then begin listening for connections */
