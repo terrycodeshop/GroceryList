@@ -1,0 +1,61 @@
+{{>head}}
+
+<div>
+
+<h1>New Product</h1>
+
+<form name="form" id="form" method="post" action="/products/new" >
+ 
+    <label for="name" >Name: </label>
+        <input
+        name="name" 
+        id="name" 
+        type="text" 
+        maxlen=40 
+        title="Enter name of product"
+        value="{{name}}" 
+        required 
+        />
+            <br />
+
+<label for="brand" >Brand: </label>
+<input 
+name="brand" 
+id="brand" 
+type="text" 
+maxlen=40 
+title='Enter "(Any Brand)" if no specific brand.'
+placeholder="(Any Brand)"
+required
+/>
+        <br />
+
+    <label for="quantity" >Quantity: </label>
+    <input 
+    name="quantity" 
+    id="quantity" 
+    type="number"
+    min=1
+ max=100
+    pattern="\d*"
+    maxlen=3
+    title="Enter number between 1 and 100." 
+    value={{quantity}} 
+    required
+    />
+    <br />
+
+    <input name="back" id="back" type="button" value="Back" onclick="window.location.href='/products'" />
+ <input name="submit" id="submit" type="submit" value="Save" />
+         
+    </form>
+
+    <form method="post" action="/products" >
+    <label for="name">Name</label>
+    <input id="name" type="text" />
+    <label for="brand" >Brand: </label>
+    <input id="brand" type="text" name="brand" />
+    <button type="submit" >OK</button>
+</form>
+
+{{>foot}}
