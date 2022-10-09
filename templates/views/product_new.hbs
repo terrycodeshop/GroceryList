@@ -24,9 +24,7 @@ name="brand"
 id="brand" 
 type="text" 
 maxlen=40 
-title='Enter "(Any Brand)" if no specific brand.'
-placeholder="(Any Brand)"
-required
+title="Enter preferred brand"
 />
         <br />
 
@@ -49,13 +47,5 @@ required
  <input name="submit" id="submit" type="submit" value="Save" />
          
     </form>
-
-    <form method="post" action="/products" >
-    <label for="name">Name</label>
-    <input id="name" type="text" />
-    <label for="brand" >Brand: </label>
-    <input id="brand" type="text" name="brand" />
-    <button type="submit" >OK</button>
-</form>
 
 {{>foot}}
