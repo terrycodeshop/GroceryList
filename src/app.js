@@ -15,6 +15,7 @@ const multer = require("multer");
 // import all 1st party modules
 const globals = require("./globals");
 const productRouter = require("./routers/product_router");
+const homeRouter = require("./routers/home_router");
 
 // create and initialize express application
 const app = express();
@@ -36,18 +37,9 @@ app.use(express.static(globals.public_path));
 // add middleware to have form data parsed and attached to request body property
 app.use(express.urlencoded({ extended: true }));
 
-// register all product routes
+// register all routes
 app.use(productRouter);
-
-// handle the home route
-app.get("/", (req, res) => {
-  res.render(
-    "index",
-    globals.join({
-      page_header: "Home",
-    })
-  );
-});
+app.use(homeRouter);
 
 // export express and mongoose connection
 module.exports = { app, mongoose };
