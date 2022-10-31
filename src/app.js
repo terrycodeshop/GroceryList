@@ -17,6 +17,8 @@ const globals = require("./globals");
 const productRouter = require("./routers/product_router");
 const homeRouter = require("./routers/home_router");
 
+//const userModel = require("./models/user_model");
+
 // create and initialize express application
 const app = express();
 const store = new MongoDBStore({
