@@ -7,10 +7,13 @@ const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
   firstname: { type: String, required: true },
   lastname: { type: String, required: true },
-  email: { type: String, required: true index: true},
+  email: { type: String, required: true unique: true},
+  mobile : {type : String, required : true, index: true},
   password: { type: String, required: true },
   resetToken: String,
-  resetTokenExpiration: Date},
+  resetTokenExpiration: Date,
+role: {type: String, required : true},
+  },
   {timestamps: true,
 virtuals : {
     fullname: {

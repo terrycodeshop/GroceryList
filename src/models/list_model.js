@@ -22,4 +22,12 @@ const listSchema = new mongoose.Schema({
 {timestamps: true}
 );
 
+// define compound index to prevent duplicate lists for a user
+listSchema.index({
+  userId: 1,
+  name: 1
+},
+{unique : true});
+
+// export the list model
 module.exports = mongoose.Model("list", listSchema);
